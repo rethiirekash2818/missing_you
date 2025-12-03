@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Rekashini ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&family=Pacifico&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+    <style>
+        /* --- CSS STYLING --- */
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            /* Elegant pastel pink gradient background */
+            background: radial-gradient(circle at center, #fff0fc 0%, #ffd1e8 100%);
+            font-family: 'Nunito', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #5a5a5a;
+            padding: 20px 0; /* Ensures fit on short screens */
+        }
+
+        /* The Main Container (Optimized for Mobile) */
+        .container {
+            position: relative;
+            width: 90%;
+            max-width: 420px;
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+            border-radius: 30px;
+            padding: 25px;
+            box-shadow: 0 20px 50px rgba(255, 105, 180, 0.35);
+            text-align: center;
+            z-index: 10;
+        }
+
+        h1 {
+            font-family: 'Pacifico', cursive;
+            color: #ff6b8b;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+        }
+
+        /* --- CINEMATIC PHOTO FRAME (Same as before) --- */
+        .photo-frame {
+            position: relative;
+            width: 100%;
+            height: 480px; 
+            border-radius: 20px;
+            overflow: hidden;
+            border: 5px solid #fff;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            background: #000; 
+        }
+
+        .slideshow-container { position: relative; width: 100%; height: 100%; }
+        .slide {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover; opacity: 0; transform: scale(1.0);
+            transition: opacity 2.0s ease-in-out, transform 12s linear;
+        }
+        .slide.active { opacity: 1; transform: scale(1.15); }
+
+        /* --- BUTTON --- */
+        .btn {
+            background: linear-gradient(45deg, #ff6b8b, #ffb3c1);
+            color: white;
+            border: none;
+            padding: 15px 35px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            margin-top: 25px;
+            cursor: pointer;
+            font-family: 'Pacifico', cursive;
+            box-shadow: 0 10px 25px rgba(255, 107, 139, 0.5);
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+        .btn:hover { transform: translateY(-3px) scale(1.05); }
+
+        /* --- MAIN MESSAGE OVERLAY (Combined) --- */
+        .message-overlay {
+            position: fixed; 
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255, 245, 250, 0.98);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease-in-out, visibility 0.4s;
+        }
+        
+        .message-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .message-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 90%;
+            max-height: 90%;
+            overflow-y: auto; /* IMPORTANT for long messages */
+            text-align: center;
+            transform: scale(0.9);
+            transition: transform 0.4s ease-in-out;
+        }
+        
+        .message-overlay.active .message-content {
+            transform: scale(1);
+        }
+
+        .message-content h2 {
+            color: #ff6b8b;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .message-content p {
+            line-height: 1.7;
+            font-size: 1.05rem;
+            color: #664455;
+            margin-bottom: 25px;
+            white-space: pre-wrap; 
+        }
+
+        /* --- STYLING FOR THE TAMIL QUOTE BOX --- */
+        .tamil-box {
+            background: #fff0f5; /* Lighter pink background */
+            border-left: 5px solid #ff6b8b; /* Pink accent line */
+            padding: 15px;
+            margin: 20px auto 10px;
+            border-radius: 5px;
+            font-style: italic;
+        }
+        
+        .tamil-box p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #885a6a;
+            margin: 0;
+        }
+
+        .close-btn {
+            background: transparent;
+            border: 2px solid #ff6b8b;
+            color: #ff6b8b;
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Keyframe Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Rethish & Rekashini</h1>
+        
+        <div class="photo-frame">
+            <div class="slideshow-container">
+                <img src="1.jpg" class="slide active" alt="Memory 1">
+                <img src="2.jpg" class="slide" alt="Memory 2">
+                <img src="3.jpg" class="slide" alt="Memory 3">
+                </div>
+        </div>
+
+        <button class="btn" onclick="openMessage()">Open My Heart 💌</button>
+    </div>
+
+    <div class="message-overlay" id="main-overlay">
+        <div class="message-content">
+            <h2>My Dearest Rekashini...</h2>
+            <p>
+                My beautiful love,<br><br>
+                Every day, I look at these pictures and they remind me of the warmth and happiness you bring into my life. Watching you smile, even just through a screen, is my favorite part of the day. You are truly the most beautiful and strongest person I know.
+                <br><br>
+                I miss everything about you—the little way you laugh, the silly faces you make, and those long, deep conversations we have late at night. The time we spend apart is hard, but it only reinforces how much I cherish the time we have together. I am already counting down the seconds until I can see you again.
+                <br><br>
+                Thank you for being you. You are my home.
+            </p>
+
+            <div class="tamil-box">
+                <p>
+                    **உனக்காக...**
+                    <br>
+                    உன் நினைவில் வாழும் என் இதயம்,<br>
+                    உனக்காகவே துடிக்கிறது. <br>
+                    நம் காதல் ஒரு போதும்<br>
+                    தோற்கப் போவதில்லை.<br>
+                    நான் உன்னை நேசிக்கிறேன்.
+                </p>
+                <p style="font-size: 0.9em; margin-top: 10px; font-style: normal; color: #a07d88;">
+                    *— My heart lives in my memory of you, and beats only for you. Our love will never fail. I love you.*
+                </p>
+            </div>
+            
+            <p style="margin-top: 25px; font-weight: bold; font-family: 'Playfair Display', serif;">
+                With all my love, <br>Rethish.
+            </p>
+            
+            <button class="close-btn" onclick="closeMessage()">Close x</button>
+        </div>
+    </div>
+
+    <script>
+        // --- JAVASCRIPT FOR CINEMATIC SLIDESHOW & MESSAGE ---
+        
+        // 1. Slideshow Logic
+        let currentSlideIdx = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        const slideIntervalTime = 6000; 
+
+        function nextSlide() {
+            slides[currentSlideIdx].classList.remove('active');
+            slides[currentSlideIdx].style.transform = "scale(1.0)";
+
+            currentSlideIdx = (currentSlideIdx + 1) % totalSlides;
+
+            slides[currentSlideIdx].classList.add('active');
+            slides[currentSlideIdx].style.transform = "scale(1.15)";
+        }
+
+        if (totalSlides > 1) {
+             setInterval(nextSlide, slideIntervalTime);
+        }
+
+        // 2. Message Box Logic (Simplified to one modal)
+        function openMessage() {
+            const overlay = document.getElementById('main-overlay');
+            overlay.classList.add('active');
+        }
+
+        function closeMessage() {
+            const overlay = document.getElementById('main-overlay');
+            overlay.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
